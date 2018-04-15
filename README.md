@@ -42,3 +42,6 @@ if __name__ == '__main__':
 ## Use cases
 - Insert Dash components in complex HTML layouts.
 - Facilitate the use of CSS frameworks (e.g. Bootstrap, Bulma) in Dash applications. No need to write your HTML using Dash HTML components.
+
+## Future work
+- Some [ideas](https://github.com/plotly/dash/issues/44): Jinja, dominate, [html-to-react](https://github.com/aknuds1/html-to-react) 

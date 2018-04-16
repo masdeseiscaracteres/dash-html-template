@@ -5,8 +5,10 @@ from lxml.etree import XPath
 
 class Template:
     @staticmethod
-    def from_file(path, injection_dict=None):
-        with open(path, 'r') as f:
+    def from_file(path, injection_dict=None, **kwargs):
+        kwargs.setdefault('mode', 'r')
+        kwargs.setdefault('encoding', 'utf-8')
+        with open(path, **kwargs) as f:
             html_str = f.read()
         return Template.from_string(html_str, injection_dict)
 

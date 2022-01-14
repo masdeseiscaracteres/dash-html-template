@@ -37,13 +37,12 @@ def _get_dash_component(tag_name, attribs, children, injection_dict):
     # Convert from lxml Element to Dash
     component_name = tag_name.title()
     attrib_dict = _convert_attributes(dict(attribs))
-    if component_name == 'Template':  # injection
-        try:
-            return injection_dict[attrib_dict['id']]  # replace the template element
-        except (KeyError, TypeError):
-            return getattr(html, component_name)(children, **attrib_dict)  # let the template tag go untouched
-    else:
+    if component_name != 'Template':
         return getattr(html, component_name)(children, **attrib_dict)
+    try:
+        return injection_dict[attrib_dict['id']]  # replace the template element
+    except (KeyError, TypeError):
+        return getattr(html, component_name)(children, **attrib_dict)  # let the template tag go untouched
 
 
 def _convert_attributes(attrib_dict):
